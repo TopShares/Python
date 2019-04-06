@@ -1,0 +1,25 @@
+Role.query.all()
+
+
+li = Role.query.all()  # 列表，多条
+
+# flask-SQLAlchemy 方法
+Role.query.first() # 单条
+Role.query.get(1) # 单条记录，根据主键id
+
+# 另一种方法 查询
+# SQLAlchemy原始方法
+db.session.query(Role.all())
+
+# 过滤
+User.query.filter_by(name="wang").all()
+
+User.query.filter_by(name="wang", role_id=1).first()
+
+User.query.filter(User.name=="wang', User.role_id==1).first()
+
+from SQLAlchemy import or_
+
+User.query.filter(or_(User.name=="wang",User.email.endswith("163.com))).all()
+
+User.query.filter().offset().limit

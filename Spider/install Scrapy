@@ -1,0 +1,5 @@
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted
+pip install -i https://pypi.douban.com/simple/ scrapy
+
+scrapy startproject projectName
+scrapy genspider -t crawl name_Spider "URL"

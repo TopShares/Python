@@ -1,0 +1,1 @@
+{"configs": [{"server": "45.32.58.124", "server_port": "1122", "password": "www.sphard.com", "method": "aes-256-cfb", "protocol": "auth_sha1_v4", "obfs": "plain"}]}

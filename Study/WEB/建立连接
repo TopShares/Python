@@ -1,0 +1,17 @@
+服务端              客户端
+listen              connect
+                    <--SYN
+
+SYN_RCVD
+ACK & SYN-->
+
+                    ESTABLISHED
+                    <--ACK
+
+ESTABLISHED
+
+为什么是三次？
+
+第一次， 客户端告诉服务端，我来了
+第二次， 客户端才知道服务端收到了
+第三次， 服务端才知道客户端收到了

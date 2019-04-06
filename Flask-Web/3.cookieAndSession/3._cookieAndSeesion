@@ -1,0 +1,9 @@
+
+
+1.浏览器第一发送无状态请求信息时，
+服务器端将会设置session_id打包成cookie（set_cookie:session_id）返回给浏览器并将sesion_id存在在数据库中
+2.浏览器第二次访问cookie未超期,服务器取出cookie中的sessin_id,与数据库中的session_id匹配取值 
+
+
+不使用cookie, 保存session
+使用url路径保存cookie（本次访问页面浏览器时,存取session关闭时）

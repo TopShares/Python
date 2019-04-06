@@ -1,0 +1,110 @@
+以动手实践为荣，以只看不练为耻。 
+以打印日志为荣，以单步跟踪为耻。 
+以空白分隔为荣，以制表分隔为耻。 
+以单元测试为荣，以手工测试为耻。 
+以代码重用为荣，以复制粘贴为耻。 
+以多态应用为荣，以分支判断为耻。 
+以Pythonic为荣，以冗余拖沓为耻。 
+以总结思考为荣，以不求甚解为耻。
+
+  总结地相当精辟啊，下面谈下我个人的理解：
+
+
+
+  1、以动手实践为荣，以只看不练为耻。 
+
+   对于编程这活来说，这绝对是真理中的真理，任何编程语言学习均是如此，动手敲一下，编译、调试一把，才能对语言的细节有更深入的了解。好多东东看似简单，做起来可能更本不是那么一回事。所以，动手，必须的。
+
+
+
+  2、以打印日志为荣，以单步跟踪为耻。 
+
+  这句严格来说个人不太赞同，对于一个成熟的软件，记录日志是最基本的，但在开发过程中，仅仅通过日志来分析并不是一个非常好的办法，通常单步跟踪比日志能更快地找出缺陷所在。
+
+
+
+  3、以空白分隔为荣，以制表分隔为耻。 
+
+   绝对支持，我所在公司这条是最基本的编程规范，像自己平时用Source Insight编码，将TAB链设置为4个空格，好多的IDE或编辑器均有此选项设置，所以这个工具可以帮助我们解决。 
+
+
+ 4、以单元测试为荣，以手工测试为耻。
+
+  这句我觉得没有写好，这里的手工测试定义不明确，单元测试个人通常使用单步跟踪，这脱离不了手工，与之相对的就是自动化测试，我理解这里说的是不是TDD（敏捷中的测试驱动开发）。不太明白。
+
+
+
+ 5、以代码重用为荣，以复制粘贴为耻。 
+
+  这句真理，复制粘贴很容易造成好多冗余代码，使用代码越来越不好维护。
+
+
+
+ 6、以多态应用为荣，以分支判断为耻。 
+
+  做为面向对象的语言，合理地运用多态无可厚非，因为个人工作使用C，对存在多个分支判断时，通常会使用驱动表，这也不失为一个好办法。
+
+
+
+  7、以Pythonic为荣，以冗余拖沓为耻。 
+
+  什么是Pythonic呢，看这里：http://faassen.n--tree.net/blog/view/weblog/2005/08/06/0，有读者翻译了下，中心思想如下：简单、清晰，不要过分强调技巧，尽量使用 Python 已经提供的功能以及符合Python的思维方式。目前个人离这个境界还相距甚远啊。
+
+ 
+
+ 8、以总结思考为荣，以不求甚解为耻。
+
+ 与1一样，真理中的真理，不仅编程，凡事均应如此啊。
+
+
+
+最后，附一个python的禅：
+
+ >>> import this
+The Zen of Python, by Tim Peters
+
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+
+
+Python之禅 by Tim Peters
+ 
+优美胜于丑陋（Python 以编写优美的代码为目标）
+明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）
+简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）
+复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）
+扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）
+间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）
+可读性很重要（优美的代码是可读的）
+即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）
+ 
+不要包容所有错误，除非你确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）
+ 
+当存在多种可能，不要尝试去猜测
+而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）
+虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）
+ 
+做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）
+ 
+如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）
+ 
+命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
