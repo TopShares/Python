@@ -54,3 +54,4 @@ for td in trs:
 with open('SSR.txt','w') as f:
     for i in li:
         f.write(i + '\n')
+print('./SSR.txt')
