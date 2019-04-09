@@ -25,15 +25,31 @@ address_list=[]#地址列表
 shape_list=[]#户型面积列表
 money_list=[]#价格列表
 href_list=[]#链接列表
-
-start_url="http://www.mgzf.com/list/xz3_xuhuiqu/fs3-jg3500,4500?order=8"
+URL = 'http://www.mgzf.com/'
+start_url = URL + 'list/qy13_0/jg0_1500/sr2/hx1/pg1/?paraName=&showMore=open'
 print('ready to get')
+
+
+html=getHTMLText(start_url)
+'<span data-v-68579cc8>共37页</span>'
+pattern = re.compile('<span data-v-68579cc8>共([\s\S]*?)页</span>')
+allPage = re.findall(pattern, html)
+print(allPage)
+
+exit()
+
+
+
+
+
+
+
+
+
 for i in range(1,2):
     url=start_url+'&page='+str(i)
     html=getHTMLText(url)
 
-
-    print('Get page:',i)
     soup=BeautifulSoup(html,'html.parser')
 
     title=soup.find_all("h1",attrs={"class":"text-ellipsis"})#标题
@@ -52,7 +68,7 @@ for i in range(1,2):
     for i in href:#链接
         newhref=i.get('href')
 
-        href_list.append('http://www.mgzf.com/'+newhref)
+        href_list.append(URL + newhref)
 
 
 #字典中的key值即为csv中列名
