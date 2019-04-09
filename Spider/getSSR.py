@@ -41,7 +41,7 @@ n2 = datetime.datetime.strptime(old[1], "%Y-%m-%d")
 print("page's time: " + old[1])
 
 if n2 >= n1:
-    print("正在写入...")
+    print("Now is Writing...")
 else:
     exit()
 xpaths = '//*[@id="readme"]/div[2]/article/table/tbody//tr'
