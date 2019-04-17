@@ -29,7 +29,7 @@ for i in e:
 def getPicUrlList(data):
 
 
-	html = '''
+    html = '''
 <!doctype html>
 <html>
 <head>
@@ -77,15 +77,20 @@ document.write("<a href='/comiclist/2286/70563/2.htm'><IMG SRC='"+m2007+"newkuku
 </html>
 
 '''
-	url = 'https://m.kukukkk.com/comiclist/2286/70563/1.htm'
-	# html = etree.HTML(html)
-	# e = html.xpath('//*[@class="subNav"]/li[2]/text()')
-	# allPage = (e[0]).split('/')[1]
-	urllit = []
-	# for i in range(1, int(allPage)):
-		
+    import re
+    url = 'https://m.kukukkk.com/comiclist/2286/70563/1.htm'
+    # pattern = re.compile('上一页</li><li>([\s\S]*?)</li>')
+    # allPage = re.findall(pattern, html)
+    # allPage = (allPage[0]).split('/')[1]
 
+    urllit = []
+    # for i in range(1, int(allPage)):
 
+    # img url
+    pattern = re.compile("IMG SRC='([\s\S]*?)'")
+    imgUrl = re.findall(pattern, html)
+    realImgUrl = (((imgUrl[0]).split('+')[-1:])[0]).replace('"','')
+    
 
 for i in data:
 	# print(i['url'])
@@ -107,7 +112,6 @@ def save_pic_from_url_dict(dict_pic, folder_title):
 
     num = 1
     for item in dict_pic:
-        time.sleep(2)
         img_url = urllib.request.quote(dict_pic[item], safe='/:?=')
         retry_urlretrieve(img_url, str(os.path.join(path_parent, folder_title))+"//%s.jpg" % num, 6)
         num += 1
