@@ -37,17 +37,17 @@ def getNum(string):
     return tmp
 # print(getNum('九十九'))
 
-def getNumber(strNum):
+def getNumber(string):
     '''
     将中文的数字改成纯数字
     '''
-    Num = re.findall(r'第(.*?)[课|讲|节|章|周|天]', strNum, re.S)
+    Num = re.findall(r'第(.*?)[课|讲|节|章|周|天]', string, re.S) # 中文数字
     if Num:
-        Num = getNum(Num[0])
-    out = re.sub(r'[^?=第].*(?=课|讲|节|章|周|天)', str(Num), strNum)
+        Num = getNum(Num[0])    # 转换成数字
+    out = re.sub(r'[^?=第].*(?=课|讲|节|章|周|天)', str(Num), string)
     return out
-# print(getNumber('第十课_自动摘要及正文抽取'))
-# print(getNumber('第二十九讲（漫画作文）【公众号】免费分享'))
+print(getNumber('第十课_自动摘要及正文抽取'))
+print(getNumber('第二十九讲（漫画作文）【公众号】免费分享'))
 
 def rmAD(str):
     '''
