@@ -22,7 +22,7 @@ class Crawler:
 			allPage = (allPage[0]).split('/')[1]
 
 			for url_i in range(1, int(allPage)+1):
-				url = re.sub(r'(\d)(?=.htm)', str(url_i), i['url'])
+				url = re.sub(r'(\d+)(?=.htm)', str(url_i), i['url'])
 				# print(url)	#https://m.kukukkk.com/comiclist/2286/70563/13.htm
 				html = self.getHTMLText(url)
 
