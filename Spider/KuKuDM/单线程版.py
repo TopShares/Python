@@ -92,7 +92,7 @@ def getUrlList(url):
     index = 1
     for i in e:
         tmp['url'] = 'https://m.kukukkk.com' + i.xpath('./@href')[0]
-        tmp['txt'] = folder + '/' + str(index.zfill(2)) + '.'+ i.xpath('./text()')[0]
+        tmp['txt'] = folder + '/' + str(index).zfill(2) + '.'+ i.xpath('./text()')[0]
         data.append(tmp)
         tmp = {}
         index += 1
