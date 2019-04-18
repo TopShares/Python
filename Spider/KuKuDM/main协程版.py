@@ -87,22 +87,22 @@ class Crawler:
 
     # download Pic
     async def DownloadImg(self, session, picUrl):
-        async with session.get(picUrl, headers=self.headers, timeout=20) as response:
+        async with session.get(picUrl, headers=self.headers, timeout=15, verify_ssl=False) as response:
+            print(picUrl)
             img_response = await response.read()
-            # picUrl ='http://m8.1whour.com/newkuku/2019/04/13/理科生坠入情网故尝试证明_第32话/00012JK.jpg'
             tmp = picUrl.split('/')[-2:]
             folder = './' + tmp[0]
             file = folder +'/'+ tmp[1]
 
             isExists = os.path.exists(folder)
-            if not isExists:  # 目录不存在，则创建
+            if not isExists:
                 os.makedirs(folder)
             with open(file, 'wb') as f:
                 f.write(img_response)
 
     # get html text
     async def getHtmlText(self, session, url):
-        async with session.get(url, headers=self.headers,timeout=20) as response:
+        async with session.get(url, headers=self.headers,timeout=15,verify_ssl=False) as response:
             return await response.text(encoding='gbk')
 def test():
     # main loop
@@ -112,8 +112,6 @@ def test():
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
 }
 
-    # url = 'https://m.kukukkk.com/comiclist/2286/'
-    url = 'https://m.kukukkk.com/comiclist/2284/'
     url = 'https://m.kukukkk.com/comiclist/1733/' # 七原罪
     r = requests.get(url, headers=headers)
     if r.status_code == 200:  # ok
