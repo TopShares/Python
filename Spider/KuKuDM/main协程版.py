@@ -83,7 +83,6 @@ class Crawler:
                     # self.SavePic(urlPic, i['txt'])
                     await self.DownloadImg(session, urlPic)
 
-        # print("processed page: " + picUrlList)
 
     # download Pic
     async def DownloadImg(self, session, picUrl):
@@ -109,14 +108,13 @@ def test():
     import requests
 
     headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
-}
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
+    }
 
     url = 'https://m.kukukkk.com/comiclist/1733/' # 七原罪
     r = requests.get(url, headers=headers)
     if r.status_code == 200:  # ok
-        html = r.content.decode('gbk')
-        html = etree.HTML(html)
+        html = etree.HTML(r.content.decode('gbk'))
         e = html.xpath('//*[@class="classBox autoHeight"]/div/li//a/@href')
         urlList = ['https://m.kukukkk.com'+x for x in e]
         c = Crawler(urlList)
