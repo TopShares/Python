@@ -1,14 +1,19 @@
 import aiohttp
 import asyncio
 import time
+import json
+import re
 
 class Crawler:
 
-    def __init__(self, urls, max_workers=4):
+    def __init__(self, urls, max_workers=24):
         self.urls = urls
         # create a queue that only allows a maximum of two items
         self.fetching = asyncio.Queue()
         self.max_workers = max_workers
+        self.headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
+        }
 
     async def crawl(self):
         # DON'T await here; start consuming things out of the queue, and
@@ -37,29 +42,42 @@ class Crawler:
                 return
 
             print(f'Fetch worker {i} is fetching a URL: {url}')
-            page = await self.fetch(url)
-            self.process(page)
+            
+            async with aiohttp.ClientSession() as session:
+                await self.fetch(session,url)
 
-    async def fetch(self, url):
-        print("Fetching URL: " + url);
-        # await asyncio.sleep(2)
-        return f"the contents of {url}"
 
-    def process(self, page):
-        print("processed page: " + page)
+    async def fetch(self,session,  url):
+        print("Fetching URL: " + url)
+        html = await self.getHtmlText(session, url)
+        pattern = re.compile(
+            '<i class="board-index board-index-\d+">([\s\S]*?)</i>'
+            '[\s\S]*?<p class="name">.*?title="([\s\S]*?)"'
+            '[\s\S]*?<p class="star">([\s\S]*?)</p>'
+            '[\s\S]*?<p class="releasetime">([\s\S]*?)</p>')
+        items = re.findall(pattern, html)
+        for item in items:
+            ele = {
+            'board-index': item[0].strip(),
+            'title': item[1].strip(),
+            'actor': item[2].strip(),
+            'time': item[3].strip(),
+            }
+            with open("猫眼电影.txt", 'a', encoding='utf-8') as f:
+                # json encode -> json str
+                f.write(json.dumps(ele, ensure_ascii=False) + '\n')
+
 
     # get html text
     async def getHtmlText(self, session, url):
         async with session.get(url, headers=self.headers,timeout=15,verify_ssl=False) as response:
             return await response.text(encoding='utf-8')
-
+            
 
 def test():
     # main loop
-    c = Crawler(['http://www.google.com',   'http://www.yahoo.com', 
-                 'http://www.cnn.com',      'http://www.gamespot.com', 
-                 'http://www.facebook.com', 'http://www.evergreen.edu',
-                 ])
+    urlList = ['http://maoyan.com/board/4?offset=' + str(offset * 10) for offset in range(10)]
+    c = Crawler(urlList)
     asyncio.run(c.crawl())
     print('OK')
 

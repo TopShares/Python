@@ -1,7 +1,7 @@
 # chrome 忽略https认证错误
-`
+```git
  --disable-infobars --ignore-certificate-errors
-`
+```
 
 爬虫有什么用？
 市场分析：
@@ -18,7 +18,3 @@
     招投标情报发现
     客户资料发掘
     企业客户发现
-
-zhihu： 用Python爬虫做什么很有用很有趣的事情
-造数
-github.com/zhangslob

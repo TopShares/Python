@@ -23,7 +23,7 @@ def write_to_file(item):
     """
     把抓取到的数据写入本地文件
     """
-    with open("猫眼电影4.txt", 'a', encoding='utf-8') as f:
+    with open("猫眼电影.txt", 'a', encoding='utf-8') as f:
         # json encode -> json str
         f.write(json.dumps(item, ensure_ascii=False) + '\n')
 
@@ -65,14 +65,13 @@ def CrawlMovieInfo(lock, offset):
         write_to_file(item)
         lock.release()
 
-
     # 每次下载完一个页面，随机等待1-3秒再次去抓取下一个页面
     # time.sleep(random.randint(1,3))
 
 
 if __name__ == "__main__":
     start_time = time.time()
-    open('猫眼电影4.txt','w',encoding='utf-8')
+    open('猫眼电影.txt','w',encoding='utf-8')
 
     # 把页面做10次的抓取，每一个页面都是一个独立的入口
     from multiprocessing import Manager

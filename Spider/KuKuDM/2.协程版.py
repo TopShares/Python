@@ -103,6 +103,9 @@ class Crawler:
     async def getHtmlText(self, session, url):
         async with session.get(url, headers=self.headers,timeout=15,verify_ssl=False) as response:
             return await response.text(encoding='gbk')
+
+
+
 def test():
     # main loop
     import requests
