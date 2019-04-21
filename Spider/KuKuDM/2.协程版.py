@@ -8,7 +8,7 @@ from lxml import etree
 
 class Crawler:
 
-    def __init__(self, urls, max_workers=4):
+    def __init__(self, urls, max_workers=8):
         self.urls = urls
         self.fetching = asyncio.Queue()
         self.max_workers = max_workers
@@ -38,18 +38,17 @@ class Crawler:
         while True:
             url = await self.fetching.get()
             if url is None:
-                # this coroutine is done; simply return to exit
+            #     # this coroutine is done; simply return to exit
                 return
 
-            print(f'Fetch worker {i} is fetching a URL: {url}')
-           
+            # print(f'Fetch worker {i} is fetching a URL: {url}')
             async with aiohttp.ClientSession() as session:
-                 picUrlList = await self.fetch(session,url)
-                 await self.process(picUrlList)
-                 # self.DownloadImg(picUrlList)
+                picPageUrlList = await self.fetch(session,url)
+                picUrlList = await self.process(session, picPageUrlList)
+                await self.DownloadImg(session, picUrlList)
 
     async def fetch(self,session, url):
-        print("Fetching URL: " + url);
+        # print("Fetching URL: " + url);
         html = await self.getHtmlText(session, url)
         pattern = re.compile('上一页</li><li>([\s\S]*?)</li>')
         allPage = re.findall(pattern, html)
@@ -59,45 +58,51 @@ class Crawler:
             url = re.sub(r'(\d+)(?=.htm)', str(url_i), url)
             picUrlList.append(url)
         return picUrlList
-        # await asyncio.sleep(2)
+        # await asyncio.sleep(0.25)
         # return f"the contents of {url}"
 
     # process pic url
-    async def process(self, picUrlList):
-        async with aiohttp.ClientSession() as session:
-            for picUrl in picUrlList:
-                html = await self.getHtmlText(session, picUrl)
-                pattern = re.compile("IMG SRC='([\s\S]*?)'")
-                imgUrl = re.findall(pattern, html)
-                imgUrl = imgUrl[0].replace('''"''', "").replace("+", "")
+    async def process(self, session, picUrlList):
+        # print("process URL: " + url);
+        tmp = []
+        for picUrl in picUrlList:
+            # print("process picUrl: " + picUrl);
+            html = await self.getHtmlText(session, picUrl)
+            pattern = re.compile("IMG SRC='([\s\S]*?)'")
+            imgUrl = re.findall(pattern, html)
+            imgUrl = imgUrl[0].replace('''"''', "").replace("+", "")
 
-                parameter_global_js = ({
-                # "server0": "http://n.1whour.com/",
-                # "server": "http://n.1whour.com/",
-                # "m200911d": "http://n.1whour.com/",
-                # "m201001d": "http://n.1whour.com/",
-                'm2007':'http://m8.1whour.com/',
-                })
-                for _i in parameter_global_js:
-                    urlPic = imgUrl.replace(str(_i), str(parameter_global_js[_i]))
-                    # self.SavePic(urlPic, i['txt'])
-                    await self.DownloadImg(session, urlPic)
-
+            parameter_global_js = ({
+            # "server0": "http://n.1whour.com/",
+            # "server": "http://n.1whour.com/",
+            # "m200911d": "http://n.1whour.com/",
+            # "m201001d": "http://n.1whour.com/",
+            'm2007':'http://m8.1whour.com/',
+            })
+            for _i in parameter_global_js:
+                urlPic = imgUrl.replace(str(_i), str(parameter_global_js[_i]))
+                tmp.append(urlPic)
+        return tmp
 
     # download Pic
-    async def DownloadImg(self, session, picUrl):
-        async with session.get(picUrl, headers=self.headers, timeout=15, verify_ssl=False) as response:
-            print(picUrl)
-            img_response = await response.read()
-            tmp = picUrl.split('/')[-2:]
-            folder = './' + tmp[0]
-            file = folder +'/'+ tmp[1]
+    async def DownloadImg(self, session, picUrlList):
+        for picUrl in picUrlList:
+            async with session.get(picUrl, headers=self.headers, timeout=15, verify_ssl=False) as response:
+                print('download picUrl: ' + picUrl)
+                try:
+                    img_response = await response.read()
+                    tmp = picUrl.split('/')[-2:]
+                    folder = './' + tmp[0]
+                    file = folder +'/'+ tmp[1]
 
-            isExists = os.path.exists(folder)
-            if not isExists:
-                os.makedirs(folder)
-            with open(file, 'wb') as f:
-                f.write(img_response)
+                    isExists = os.path.exists(folder)
+                    if not isExists:
+                        os.makedirs(folder)
+                    with open(file, 'wb') as f:
+                        f.write(img_response)
+                except Exception as e:
+                    print(e)
+                    pass
 
     # get html text
     async def getHtmlText(self, session, url):
@@ -113,8 +118,9 @@ def test():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
     }
-
-    url = 'https://m.kukukkk.com/comiclist/1733/' # 七原罪
+    n = '1733'  # 七原罪
+    n = '2519'
+    url = 'https://m.kukukkk.com/comiclist/'+n+'/'
     r = requests.get(url, headers=headers)
     if r.status_code == 200:  # ok
         html = etree.HTML(r.content.decode('gbk'))
