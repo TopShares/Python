@@ -53,7 +53,10 @@ class Crawler:
         pattern = re.compile('上一页</li><li>([\s\S]*?)</li>')
         allPage = re.findall(pattern, html)
         allPage = (allPage[0]).split('/')[1]
-        picUrlList = [re.sub(r'(\d+)(?=.htm)', str(e), url) for e in range(1,int(allPage)+1)]
+        picUrlList = []
+        for url_i in range(1, int(allPage)+1):
+            url = re.sub(r'(\d+)(?=.htm)', str(url_i), url)
+            picUrlList.append(url)
         return picUrlList
 
     # process pic url
@@ -113,16 +116,38 @@ def test():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
     }
-    n = '1733'  # 七原罪
-    url = 'https://m.kukukkk.com/comiclist/'+n+'/'
-    r = requests.get(url, headers=headers)
-    if r.status_code == 200:  # ok
-        html = etree.HTML(r.content.decode('gbk'))
-        e = html.xpath('//*[@class="classBox autoHeight"]/div/li//a/@href')
-        urlList = ['https://m.kukukkk.com'+x for x in e]
-        c = Crawler(urlList)
-        asyncio.run(c.crawl())
-        print('OK')
+
+    URL = 'https://www.uumtu.com/siwa/'
+    image_url = "https://www.uumtu.com/siwa/28470.html"
+    # html = requests.get(image_url, headers=headers)
+    # rep = re.compile(r'<img src="(.*?)" alt="(.*?)" />')
+    # result = re.findall(rep, html.text)
+
+    html = requests.get(image_url,headers=headers)
+    rep = re.compile(r'href="/siwa/(.*?).html">末页')
+    result = re.findall(rep, html.text)
+    total = (((((result[0]).split('/'))[-1:])[0]).split('_'))
+    typeNum = total[0]
+    total = total[-1:][0]
+    go = 1
+    
+    for go in range(go, int(total) + 1):
+        tmp = URL + typeNum + '_' + str(go) + '.html'
+        print(tmp)
+
+    print(total)
+
+
+    # n = '1733'  # 七原罪
+    # url = 'https://m.kukukkk.com/comiclist/'+n+'/'
+    # r = requests.get(url, headers=headers)
+    # if r.status_code == 200:  # ok
+    #     html = etree.HTML(r.content.decode('gbk'))
+    #     e = html.xpath('//*[@class="classBox autoHeight"]/div/li//a/@href')
+    #     urlList = ['https://m.kukukkk.com'+x for x in e]
+    #     c = Crawler(urlList)
+    #     asyncio.run(c.crawl())
+    #     print('OK')
 
 
 if __name__=='__main__':
