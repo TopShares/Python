@@ -44,8 +44,8 @@ class Crawler:
             # print(f'Fetch worker {i} is fetching a URL: {url}')
             async with aiohttp.ClientSession() as session:
                 picPageUrlList = await self.fetch(session,url)
-                picUrlList = await self.process(session, picPageUrlList)
-                await self.DownloadImg(session, picUrlList)
+                # picUrlList = await self.process(session, picPageUrlList)
+                # await self.DownloadImg(session, picUrlList)
 
     async def fetch(self,session, url):
         # print("Fetching URL: " + url);
@@ -61,26 +61,37 @@ class Crawler:
 
     # process pic url
     async def process(self, session, picUrlList):
-        # print("process URL: " + url);
-        tmp = []
-        for picUrl in picUrlList:
-            # print("process picUrl: " + picUrl);
-            html = await self.getHtmlText(session, picUrl)
-            pattern = re.compile("IMG SRC='([\s\S]*?)'")
-            imgUrl = re.findall(pattern, html)
-            imgUrl = imgUrl[0].replace('''"''', "").replace("+", "")
+        # print("process URL: " + picUrlList)
 
-            parameter_global_js = ({
-            # "server0": "http://n.1whour.com/",
-            # "server": "http://n.1whour.com/",
-            # "m200911d": "http://n.1whour.com/",
-            # "m201001d": "http://n.1whour.com/",
-            'm2007':'http://m8.1whour.com/',
-            })
-            for _i in parameter_global_js:
-                urlPic = imgUrl.replace(str(_i), str(parameter_global_js[_i]))
-                tmp.append(urlPic)
-        return tmp
+        html = await self.getHtmlText(session, picUrlList)
+        # pattern = re.compile("IMG SRC=\"(.*?)'",re.IGNORECASE)
+        pattern = re.compile(r'<img src="(.*?)" alt="(.*?)" />')
+        imgUrl = re.findall(pattern, html)
+        return imgUrl[0][0]
+        # tmp = []
+        # for picUrl in picUrlList:
+        #     print("process picUrl: " + picUrl)
+        #     exit()
+        #     html = await self.getHtmlText(session, picUrl)
+        #     print(html)
+        #     pattern = re.compile("IMG SRC='([\s\S]*?)'",re.IGNORECASE)
+        #     # pattern = re.compile(r'<img src="(.*?)" alt="(.*?)" />')
+        #     imgUrl = re.findall(pattern, html)
+        #     print(imgUrl)
+        #     exit()
+        #     imgUrl = imgUrl[0].replace('''"''', "").replace("+", "")
+
+        #     parameter_global_js = ({
+        #     # "server0": "http://n.1whour.com/",
+        #     # "server": "http://n.1whour.com/",
+        #     # "m200911d": "http://n.1whour.com/",
+        #     # "m201001d": "http://n.1whour.com/",
+        #     'm2007':'http://m8.1whour.com/',
+        #     })
+        #     for _i in parameter_global_js:
+        #         urlPic = imgUrl.replace(str(_i), str(parameter_global_js[_i]))
+        #         tmp.append(urlPic)
+        # return tmp
 
     # download Pic
     async def DownloadImg(self, session, picUrlList):
@@ -104,8 +115,9 @@ class Crawler:
 
     # get html text
     async def getHtmlText(self, session, url):
+        print(url)
         async with session.get(url, headers=self.headers,timeout=15,verify_ssl=False) as response:
-            return await response.text(encoding='gbk')
+            return await response.text(encoding='utf-8')
 
 
 
@@ -131,24 +143,10 @@ def test():
     total = total[-1:][0]
     go = 1
     
-    for go in range(go, int(total) + 1):
-        tmp = URL + typeNum + '_' + str(go) + '.html'
-        print(tmp)
-
-    print(total)
-
-
-    # n = '1733'  # 七原罪
-    # url = 'https://m.kukukkk.com/comiclist/'+n+'/'
-    # r = requests.get(url, headers=headers)
-    # if r.status_code == 200:  # ok
-    #     html = etree.HTML(r.content.decode('gbk'))
-    #     e = html.xpath('//*[@class="classBox autoHeight"]/div/li//a/@href')
-    #     urlList = ['https://m.kukukkk.com'+x for x in e]
-    #     c = Crawler(urlList)
-    #     asyncio.run(c.crawl())
-    #     print('OK')
-
+    urlList = [URL+typeNum+'_'+str(e)+'.html' for e in range(1,int(total)+1)]
+    c = Crawler(urlList)
+    asyncio.run(c.crawl())
+    print('OK')
 
 if __name__=='__main__':
     start = time.time()
