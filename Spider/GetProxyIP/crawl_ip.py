@@ -9,7 +9,6 @@ import time
 
 class Proxies(object):
 
-
     """docstring for Proxies"""
     def __init__(self, page=3):
         self.proxies = []
