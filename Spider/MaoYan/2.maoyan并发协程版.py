@@ -6,7 +6,7 @@ import re
 
 class Crawler:
 
-    def __init__(self, urls, max_workers=24):
+    def __init__(self, urls, max_workers=8):
         self.urls = urls
         # create a queue that only allows a maximum of two items
         self.fetching = asyncio.Queue()
@@ -63,7 +63,7 @@ class Crawler:
             'actor': item[2].strip(),
             'time': item[3].strip(),
             }
-            with open("猫眼电影.txt", 'a', encoding='utf-8') as f:
+            with open("MaoYanMovie.txt", 'a', encoding='utf-8') as f:
                 # json encode -> json str
                 f.write(json.dumps(ele, ensure_ascii=False) + '\n')
 
@@ -84,6 +84,7 @@ def test():
 
 if __name__=='__main__':
     start = time.time()
+    open('MaoYanMovie.txt','w',encoding='utf-8')
     test()
     end = time.time()
     print("Finished in Time Consuming: {}".format(end-start))
