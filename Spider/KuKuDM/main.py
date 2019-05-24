@@ -8,7 +8,7 @@ from lxml import etree
 
 class Crawler:
 
-    def __init__(self, urls, max_workers=8):
+    def __init__(self, urls, max_workers=16):
         self.urls = urls
         self.fetching = asyncio.Queue()
         self.max_workers = max_workers
@@ -83,7 +83,6 @@ class Crawler:
     async def DownloadImg(self, session, picUrlList):
         for picUrl in picUrlList:
             async with session.get(picUrl, headers=self.headers, timeout=15, verify_ssl=False) as response:
-                print('download picUrl: ' + picUrl)
                 try:
                     img_response = await response.read()
                     tmp = picUrl.split('/')[-2:]
@@ -93,8 +92,11 @@ class Crawler:
                     isExists = os.path.exists(folder)
                     if not isExists:
                         os.makedirs(folder)
-                    with open(file, 'wb') as f:
-                        f.write(img_response)
+                    isFileExists = os.path.exists(file)
+                    if not isFileExists:
+                        print('download picUrl: ' + picUrl)
+                        with open(file, 'wb') as f:
+                            f.write(img_response)
                 except Exception as e:
                     print(e)
                     pass
