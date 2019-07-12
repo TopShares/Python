@@ -56,7 +56,7 @@ class Crawler:
         pageNo = tmp[-1:][0]
         data = {
             'province':'901',
-            'district' : '', 
+            'district' : '',
             'district2'  : '',
             'shopTypes'  : '',
             'payTypes'   : '',
@@ -70,7 +70,7 @@ class Crawler:
         file = self.folder + pageNo.zfill(5)+ '.json'
         isFileExists = os.path.exists(file)
         if not isFileExists:
-            async with session.post(url, headers=self.headers, data=data,timeout=15, verify_ssl=False) as response:
+            async with session.post(url, headers=self.headers, data=data, timeout=5, verify_ssl=False) as response:
                 print('save to .json file, page is: ' + pageNo)
                 try:
                     response = await response.json()
@@ -85,6 +85,9 @@ class Crawler:
 
 def test():
     import requests
+    # 关闭https证书验证警告
+    requests.packages.urllib3.disable_warnings()
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36',
         'Referer': 'https://www.sandpay.com.cn/shop/merchantList.html',
@@ -92,16 +95,16 @@ def test():
     }
     url = 'https://www.sandpay.com.cn/shop/getMerchantPage'
     # 1. 导入Python SSL处理模块
-    import ssl
+    # import ssl
     # 2. 表示忽略未经核实的SSL证书认证
-    context = ssl._create_unverified_context()
-    
+    # Econtext = ssl._create_unverified_context()
+
     data ={
         'province':'901',   # 上海市
         #'province':'902',  # 江苏省
         #'province':'903',  # 浙江省
         #'province':'904',  # 北京市
-        'district' : '', 
+        'district' : '',
         'district2'  : '',
         'shopTypes'  : '',
         'payTypes'   : '',
