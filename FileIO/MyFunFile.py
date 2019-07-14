@@ -46,12 +46,12 @@ def getNumber(string):
         Num = getNum(Num[0])    # 转换成数字
     out = re.sub(r'[^?=第].*(?=课|讲|节|章|周|天)', str(Num), string)
     return out
-print(getNumber('第十课_自动摘要及正文抽取'))
-print(getNumber('第二十九讲（漫画作文）【公众号】免费分享'))
+# print(getNumber('第十课_自动摘要及正文抽取'))
+# print(getNumber('第二十九讲（漫画作文）【公众号】免费分享'))
 
 def rmAD(str):
     '''
-    删除广告
+    删除【】广告
     :param str
     :return: str
     '''
@@ -94,12 +94,12 @@ def addDot(str):
     '''
     数字开头后加上点
     '''
-    
+
     num = re.findall(r'(^\d{1,2})', str)
     if num:
         out = re.sub(r'(^\d{1,2})',num[0] + '.', str)
         return out
     else:
         return str
-    
+
 # addDot(r'1response网络详细信息.mp4')
