@@ -13,10 +13,11 @@ def openPath(path=""):
             '''
             目录更名
             '''
-            # print(filename)
+            print(filename)
             # out = rmAD(filename)
-            # newPath = os.path.join(path,str(out))
-            # os.renames(pathTmp,newPath)
+            out = getNum(filename)  # 中文数字转英文
+            newPath = os.path.join(path,str(out))
+            os.renames(pathTmp,newPath)
             # out = getTen(pathTmp[-1:])
         #     if out is not 10:
         #         newPath = os.path.join(path,str(out))
@@ -58,15 +59,14 @@ def openPath(path=""):
             '''
 
 def main():
-    # path=r"C:\Users\Pancras\Desktop\课件"
-    # s = r'F:\清华学霸尹成Python爬虫视频-ok\day'
+    # path=r"C:\Users\Pancras\Desktop\课件" 
     # lis = [s+str(i) for i in range(2,52)]
     # for path in lis:
     #     openPath(path)
     # path = r'F:\多啦A梦[xxxx.xxx]'
     # path = r'E:\21 git安装和使用'
     path = r'E:\08. 超全技术电子书汇总'
-    path=r'E:\SQL优化'
+    path = r'E:\玩转算法与数据结构'
     openPath(path)
 
 
