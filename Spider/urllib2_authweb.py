@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 '''
+python 2.X
 '''
 
 import urllib2
