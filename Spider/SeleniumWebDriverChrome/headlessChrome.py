@@ -20,7 +20,7 @@ class Crawler:
         self.chrome_options.add_argument('--disable-gpu')
 
         path = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
-        path = r'C:\Users\liu.banglong\AppData\Local\Google\Chrome\Application\chromedriver.exe'
+        # path = r'C:\Users\liu.banglong\AppData\Local\Google\Chrome\Application\chromedriver.exe'
         abspath = os.path.abspath(path) 
         
         # 创建浏览器对象
