@@ -1,0 +1,44 @@
+根据大量图片来训练自定义语言。生成训练文件的语言库文件，然后放入指定位置即可
+具体步骤如下：
+
+1、合成tif文件
+	选取样本文件，比如选择30张jpg文件，当然越多越好，使用jtessBoxEditor合成tif文件
+命名为mylang.myfont.exp0.tif
+
+2、根据mylang.myfont.exp0.tif生成box文件（命令行），box文件记录的是字符在每个图片中的位置信息
+	tesseract mylang.myfont.exp0.tifmylang.myfont.exp0 -l eng -psm 5 batch.nochop makebox
+
+3、用jtesseditor来修改box文件，即用jtessBoxEditor打开对应的tif文件mylang.myfont.exp0.tif，矫正识别出的字符，如果识别错误的话，改正，并且看下X、Y、W、H是否需要修正
+
+
+4、生成font文件，这里的font为自定义的myfont，与前面一致
+	命令：（命令行）
+	echo myfont 0 0 0 0 0 >font_properties
+	
+5、生成训练文件（命令行）
+	tesseract mylang.myfont.exp0.tifmylang.myfont.exp0 -l eng -psm 5 nobatch box.train
+
+6、生成字符集文件（命令行）
+	unicharset_extractor mylang.myfont.exp0.box
+
+7、生成shape文件（命令行）
+	shapeclustering -F font_properties -Uunicharset -O mylang.unicharset mylang.myfont.exp0.tr
+
+8、生成聚集字符特征文件（命令行）
+	mftraining -F font_properties -U unicharset-O mylang.unicharset mylang.myfont.exp0.tr
+
+9、生成字符正常化特征文件（命令行）
+	cntraining mylang.myfont.exp0.tr
+
+10、更名（命令行）
+	rename normproto myfont.normproto
+	rename inttemp myfont.inttemp
+	rename pffmtable myfont.pffmtable
+	rename unicharset myfont.unicharset
+	rename shapetable myfont.shapetable
+
+11、合并训练文件（命令行）
+	combine_tessdata myfont
+
+12、测试将最终的到的myfont.traineddata放到tesseract安装目录的tessdata目录下
+	tesseract xx.jpg result -l myfont  -psm 5

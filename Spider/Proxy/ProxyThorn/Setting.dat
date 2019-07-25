@@ -1,0 +1,12 @@
+http://m.baidu.com@http://m.baidu.com%baidu$0
+http://m.baidu.com@http://dict.baidu.com%icon2$1
+m_nThreadNumber=100
+m_nConTimeout=5
+m_nVerifyTimeout=10
+m_bAutoAddToFavorite=0
+m_bAutoTimingVerify=0
+m_bAutoRun=0
+m_bMinimize=0
+m_bAmbiguous=0
+m_nAutoProxyConfig=0
+m_nFavorites=6
