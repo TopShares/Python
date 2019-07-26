@@ -1,19 +1,15 @@
+import jsonpath,json 
+ 
+with open('data.json', 'r', encoding='utf-8')as f:
 
-import urllib.parse
+    # 把json格式字符串转换成python对象
+    jsonobj = json.load(f)\
+ 
+# res = html.xpath('//*[@id="content"]//li//a')
+# 从根节点开始，匹配name节点
+txt = jsonpath.jsonpath(jsonobj,'$..txt')
+url = jsonpath.jsonpath(jsonobj,'$..url')
 
-url =r'https://wer.com/i733/8734.html?sid=23833' 
-url, frag = urllib.parse.urldefrag(url)
-res=urllib.parse.urlsplit(url)
-print(res.scheme)
-print(res.netloc)
-print(res.path)
+print(txt,url)
 
-print('*'*99)
-
-baseUrl = 'https://manhua.fzdm.com/56/'  
-
-path = r'311/'
-
-test = urllib.parse.urljoin(baseUrl,path)
-print(test)
-
+print(type(txt))

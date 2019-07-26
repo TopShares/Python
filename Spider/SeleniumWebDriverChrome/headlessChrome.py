@@ -1,8 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import time,os 
+import time,os,json
+import urllib.parse 
 from selenium.webdriver import ActionChains
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -20,7 +22,7 @@ class Crawler:
         self.chrome_options.add_argument('--disable-gpu')
 
         path = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
-        # path = r'C:\Users\liu.banglong\AppData\Local\Google\Chrome\Application\chromedriver.exe'
+        path = r'C:\Users\liu.banglong\AppData\Local\Google\Chrome\Application\chromedriver.exe'
         abspath = os.path.abspath(path) 
         
         # 创建浏览器对象
@@ -40,16 +42,16 @@ class Crawler:
             html = etree.HTML(html)
             
             res = html.xpath('//*[@id="content"]//li//a')
-
             li = []
             for td in res:
-                txt = td.xpath('.//text()')
-                url = td.xpath('.//@href')
+                txt = td.xpath('.//text()')[0] 
+                url = td.xpath('.//@href')[0] 
+                url = urllib.parse.urljoin(self.rooturl,url)
                 tmp = {'txt':txt, 'url':url}
-                li.append(tmp)
-            print(li)
-            with open('test.json', 'w', encoding='utf-8') as f:
-                f.write(str(li))
+                li.append(tmp) 
+            with open('data.json', 'w', encoding='utf-8') as f:
+                jp = json.dumps(li, ensure_ascii=False)  # 对数据进行编码。
+                f.write(jp)
             # res = self.browser.find_element_by_class_name('pure-u-1-2 pure-u-lg-1-4')
             # res = self.browser.find_element_by_css_selector('#content > li')
             # res = self.browser.find_element_by_xpath('//*[@id="content"]//li//a/@href')
