@@ -1,8 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import time,os 
+import time,os,json
+import urllib.parse 
 from selenium.webdriver import ActionChains
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -26,7 +28,7 @@ class Crawler:
         self.chrome_options.add_argument('--disable-gpu')
 
         path = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe"
-        # path = r'C:\Users\liu.banglong\AppData\Local\Google\Chrome\Application\chromedriver.exe'
+        path = r'C:\Users\liu.banglong\AppData\Local\Google\Chrome\Application\chromedriver.exe'
         abspath = os.path.abspath(path) 
         
         # 创建浏览器对象
@@ -46,7 +48,6 @@ class Crawler:
             html = etree.HTML(html)
             
             res = html.xpath('//*[@id="content"]//li//a')
-
             li = []
             id = 334
             for td in res:
@@ -59,7 +60,6 @@ class Crawler:
                 li.append(tmp)
             print(li)
             self.db.insert_data_many(li)
-
             # res = self.browser.find_element_by_class_name('pure-u-1-2 pure-u-lg-1-4')
             # res = self.browser.find_element_by_css_selector('#content > li')
             # res = self.browser.find_element_by_xpath('//*[@id="content"]//li//a/@href')
