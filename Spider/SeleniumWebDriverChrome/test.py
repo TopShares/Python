@@ -1,19 +1,4 @@
+import myPyMongodb
 
-import urllib.parse
-
-url =r'https://wer.com/i733/8734.html?sid=23833' 
-url, frag = urllib.parse.urldefrag(url)
-res=urllib.parse.urlsplit(url)
-print(res.scheme)
-print(res.netloc)
-print(res.path)
-
-print('*'*99)
-
-baseUrl = 'https://manhua.fzdm.com/56/'  
-
-path = r'311/'
-
-test = urllib.parse.urljoin(baseUrl,path)
-print(test)
-
+db = myPyMongodb.myMongodb(host='127.0.0.1',port=27017,database='my_database',collection='my_collection')
+db.insert_data_many([{'name': 'amy', 'id': 1798},{'name': 'bob', 'id': 1631}])

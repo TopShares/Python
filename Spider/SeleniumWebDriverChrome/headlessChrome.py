@@ -9,9 +9,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from lxml import etree
 
+import urllib.parse
+
+
+import myPyMongodb
+
 class Crawler:
 
     def __init__(self, rooturl):
+        self.db = myPyMongodb.myMongodb(host='127.0.0.1',port=27017,database='my_database',collection='fzdm_') 
         self.rooturl = rooturl
 
         # 参数对象， 控制Chrome以无界面模式打开
@@ -42,14 +48,18 @@ class Crawler:
             res = html.xpath('//*[@id="content"]//li//a')
 
             li = []
+            id = 334
             for td in res:
-                txt = td.xpath('.//text()')
-                url = td.xpath('.//@href')
-                tmp = {'txt':txt, 'url':url}
+                txt = td.xpath('.//text()')[0]
+                url = td.xpath('.//@href')[0]
+                url = urllib.parse.urljoin(self.rooturl, url)
+                
+                tmp = {'txt':txt, 'url':url, 'id': str(id).zfill(3)}
+                id -= 1
                 li.append(tmp)
             print(li)
-            with open('test.json', 'w', encoding='utf-8') as f:
-                f.write(str(li))
+            self.db.insert_data_many(li)
+
             # res = self.browser.find_element_by_class_name('pure-u-1-2 pure-u-lg-1-4')
             # res = self.browser.find_element_by_css_selector('#content > li')
             # res = self.browser.find_element_by_xpath('//*[@id="content"]//li//a/@href')
