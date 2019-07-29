@@ -60,7 +60,7 @@ class Crawler:
                 li.append(tmp) 
             # self.db.insert_data_many(li) # 入库 [MongoDB]
             with open('data.json', 'w', encoding='utf-8') as f:
-                f.write(li)
+                f.write(json.load(li))
             # res = self.browser.find_element_by_class_name('pure-u-1-2 pure-u-lg-1-4')
             # res = self.browser.find_element_by_css_selector('#content > li')
             # res = self.browser.find_element_by_xpath('//*[@id="content"]//li//a/@href')
