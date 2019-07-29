@@ -15,10 +15,14 @@ class myMongodb:
         self.mongo_db = self.mongo_client[database]
 
         # 创建collection
-        self.collection = self.mongo_db[collection]
+        # self.collection = self.mongo_db[collection]
+        self.collection = self.mongo_db.collection 
 
     def insert_data_many(self, oList):
         self.collection.insert_many(oList)
+    
+    def remove_data_all(self):
+        self.collection.remove()
 # dic = {'name':'serena',"id":1532}
 # collection.insert_one(dic)
 
@@ -28,11 +32,14 @@ class myMongodb:
 # list_of_records = [{'name': 'amy', 'id': 1798},{'name': 'bob', 'id': 1631}]
 # collection.insert_many(list_of_records)
 
-
-
 # collection.delete_many({'id':1631})
 
 
+
+
+# 全部删除
+
+# collection.remove()
 # for record in collection.find():
 #     print(record)
 if __name__ == "__main__":
