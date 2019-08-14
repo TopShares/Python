@@ -1,0 +1,304 @@
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+<script id="custom-useragent-string"/>
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<s:element name="HelloWorld">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="ss" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="HelloWorldResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="Register">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="CheckSum" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="RegisterResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="RegisterResult" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="login">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="loginResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="loginResult" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getDevInfo">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="version" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getDevInfoResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="getDevInfoResult" type="tns:DevelopInfo"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="DevelopInfo">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="CurrentVersion" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="DownLoadURL" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Tips" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att1" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att2" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att3" type="s:string"/>
+</s:sequence>
+</s:complexType>
+<s:element name="startCheck">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="startCheckResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="startCheckResult" type="s:int"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getUserInfo">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getUserInfoResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="getUserInfoResult" type="tns:UserInfomation"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:complexType name="UserInfomation">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="MacAddress" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+<s:element minOccurs="1" maxOccurs="1" name="EndTime" type="s:dateTime"/>
+<s:element minOccurs="0" maxOccurs="1" name="CheckSum" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att1" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att2" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att3" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att4" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="Att5" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="HelloWorldSoapIn">
+<wsdl:part name="parameters" element="tns:HelloWorld"/>
+</wsdl:message>
+<wsdl:message name="HelloWorldSoapOut">
+<wsdl:part name="parameters" element="tns:HelloWorldResponse"/>
+</wsdl:message>
+<wsdl:message name="RegisterSoapIn">
+<wsdl:part name="parameters" element="tns:Register"/>
+</wsdl:message>
+<wsdl:message name="RegisterSoapOut">
+<wsdl:part name="parameters" element="tns:RegisterResponse"/>
+</wsdl:message>
+<wsdl:message name="loginSoapIn">
+<wsdl:part name="parameters" element="tns:login"/>
+</wsdl:message>
+<wsdl:message name="loginSoapOut">
+<wsdl:part name="parameters" element="tns:loginResponse"/>
+</wsdl:message>
+<wsdl:message name="getDevInfoSoapIn">
+<wsdl:part name="parameters" element="tns:getDevInfo"/>
+</wsdl:message>
+<wsdl:message name="getDevInfoSoapOut">
+<wsdl:part name="parameters" element="tns:getDevInfoResponse"/>
+</wsdl:message>
+<wsdl:message name="startCheckSoapIn">
+<wsdl:part name="parameters" element="tns:startCheck"/>
+</wsdl:message>
+<wsdl:message name="startCheckSoapOut">
+<wsdl:part name="parameters" element="tns:startCheckResponse"/>
+</wsdl:message>
+<wsdl:message name="getUserInfoSoapIn">
+<wsdl:part name="parameters" element="tns:getUserInfo"/>
+</wsdl:message>
+<wsdl:message name="getUserInfoSoapOut">
+<wsdl:part name="parameters" element="tns:getUserInfoResponse"/>
+</wsdl:message>
+<wsdl:portType name="MyWebServiceSoap">
+<wsdl:operation name="HelloWorld">
+<wsdl:input message="tns:HelloWorldSoapIn"/>
+<wsdl:output message="tns:HelloWorldSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="Register">
+<wsdl:input message="tns:RegisterSoapIn"/>
+<wsdl:output message="tns:RegisterSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="login">
+<wsdl:input message="tns:loginSoapIn"/>
+<wsdl:output message="tns:loginSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="getDevInfo">
+<wsdl:input message="tns:getDevInfoSoapIn"/>
+<wsdl:output message="tns:getDevInfoSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="startCheck">
+<wsdl:input message="tns:startCheckSoapIn"/>
+<wsdl:output message="tns:startCheckSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="getUserInfo">
+<wsdl:input message="tns:getUserInfoSoapIn"/>
+<wsdl:output message="tns:getUserInfoSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="MyWebServiceSoap" type="tns:MyWebServiceSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="HelloWorld">
+<soap:operation soapAction="http://tempuri.org/HelloWorld" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Register">
+<soap:operation soapAction="http://tempuri.org/Register" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="login">
+<soap:operation soapAction="http://tempuri.org/login" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getDevInfo">
+<soap:operation soapAction="http://tempuri.org/getDevInfo" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="startCheck">
+<soap:operation soapAction="http://tempuri.org/startCheck" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getUserInfo">
+<soap:operation soapAction="http://tempuri.org/getUserInfo" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="MyWebServiceSoap12" type="tns:MyWebServiceSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="HelloWorld">
+<soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Register">
+<soap12:operation soapAction="http://tempuri.org/Register" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="login">
+<soap12:operation soapAction="http://tempuri.org/login" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getDevInfo">
+<soap12:operation soapAction="http://tempuri.org/getDevInfo" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="startCheck">
+<soap12:operation soapAction="http://tempuri.org/startCheck" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getUserInfo">
+<soap12:operation soapAction="http://tempuri.org/getUserInfo" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="MyWebService">
+<wsdl:port name="MyWebServiceSoap" binding="tns:MyWebServiceSoap">
+<soap:address location="http://www.cooldota.cn/mywebservice.asmx"/>
+</wsdl:port>
+<wsdl:port name="MyWebServiceSoap12" binding="tns:MyWebServiceSoap12">
+<soap12:address location="http://www.cooldota.cn/mywebservice.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
