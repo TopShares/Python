@@ -15,7 +15,7 @@ def openPath(path=""):
             '''
             print(filename)
             # out = rmAD(filename)
-            out = getNum(filename)  # 中文数字转英文
+            out = __getNum(filename)  # 中文数字转英文
             newPath = os.path.join(path,str(out))
             os.renames(pathTmp,newPath)
             # out = getTen(pathTmp[-1:])
