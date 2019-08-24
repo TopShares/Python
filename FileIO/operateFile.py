@@ -36,8 +36,8 @@ def openPath(path=""):
             #     os.renames(pathTmp,newPath)
             # new = getNumber(filename)
             # new = addNum(filename)      # 个位数字后加点
-            new = addDot(filename)          # 数字后加点
-            # new = rmAD(filename)
+            # new = addDot(filename)          # 数字后加点
+            new = getNumber(filename)    # 将中文数字转成英文
             newPath = os.path.join(path, new)
             os.renames(pathTmp,newPath)
             # print(newPath)
@@ -67,6 +67,7 @@ def main():
     # path = r'E:\21 git安装和使用'
     path = r'E:\08. 超全技术电子书汇总'
     path = r'E:\玩转算法与数据结构'
+    path = r'E:\02普通话教程（10月更新）\主要学习课程\1.最新普通话教程(10月更新)\阶段二'
     openPath(path)
 
 
