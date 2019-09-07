@@ -4,7 +4,7 @@ key = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 k=['十','百','千','万']
 
 
-def getNum(string):
+def __getNum(string):
     '''
     百位内转换
     '''
@@ -35,7 +35,7 @@ def getNum(string):
                 result = result + ten
         tmp += result
     return tmp
-# print(getNum('九十九'))
+# print(__getNum('九十九'))
 
 def getNumber(string):
     '''
@@ -43,7 +43,7 @@ def getNumber(string):
     '''
     Num = re.findall(r'第(.*?)[课|讲|节|章|周|天]', string, re.S) # 中文数字
     if Num:
-        Num = getNum(Num[0])    # 转换成数字
+        Num = __getNum(Num[0])    # 转换成数字
     out = re.sub(r'[^?=第].*(?=课|讲|节|章|周|天)', str(Num), string)
     return out
 # print(getNumber('第十课_自动摘要及正文抽取'))

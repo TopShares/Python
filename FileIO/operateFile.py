@@ -14,8 +14,8 @@ def openPath(path=""):
             目录更名
             '''
             print(filename)
-            # out = rmAD(filename)
-            out = getNum(filename)  # 中文数字转英文
+            # out = rmAD(filename) 
+            out = getNumber(filename)  # 中文数字转英文
             newPath = os.path.join(path,str(out))
             os.renames(pathTmp,newPath)
             # out = getTen(pathTmp[-1:])
@@ -36,10 +36,10 @@ def openPath(path=""):
             #     os.renames(pathTmp,newPath)
             # new = getNumber(filename)
             # new = addNum(filename)      # 个位数字后加点
-            new = addDot(filename)          # 数字后加点
+            # new = addDot(filename)          # 数字后加点
             # new = rmAD(filename)
-            newPath = os.path.join(path, new)
-            os.renames(pathTmp,newPath)
+            # newPath = os.path.join(path, new)
+            # os.renames(pathTmp,newPath)
             # print(newPath)
             # print("new"+new)
             # # new = re.sub('_recv','',filename)
@@ -59,14 +59,11 @@ def openPath(path=""):
             '''
 
 def main():
-    # path=r"C:\Users\Pancras\Desktop\课件" 
+    # path=r"C:\Users\Pancras\Desktop\课件"
     # lis = [s+str(i) for i in range(2,52)]
     # for path in lis:
     #     openPath(path)
-    # path = r'F:\多啦A梦[xxxx.xxx]'
-    # path = r'E:\21 git安装和使用'
-    path = r'E:\08. 超全技术电子书汇总'
-    path = r'E:\玩转算法与数据结构'
+    path = ''
     openPath(path)
 
 
