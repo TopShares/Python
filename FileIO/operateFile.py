@@ -58,6 +58,8 @@ def main():
     path=r'E:\【瑞客论坛 www.ruike1.com】【天勤】2021天勤计算机全程班【现售：￥1980】'
     path=r'E:\【瑞客论坛 www.ruike1.com】黑马头条项目 - Java Springboot2.0（资料、代码。讲义）14天完整'
     path=r'E:\【瑞客论坛 www.ruike1.com】spring源码底层分析'
+    path=r'F:\恋上数据结构与算法（第二季）'
+    path=r'C:\Users\liu.banglong\Desktop\Python 实战：用 Scrapyd 打造个人化的爬虫部署管理控制台'
     openPath(path)
 
 
