@@ -42,13 +42,22 @@ def getNumber(string):
     '''
     将中文的数字改成纯数字
     '''
+    out = ''
     # pattern = r'第(.*?)[课|讲|节|章|周|天]'
     pattern = r'(?<=第)(.*?)(?=[课|讲|节|章|周|天])'
     Num = re.findall(pattern, string, re.S) # 中文数字
     if Num:
-        Num = __getNum(Num[0])    # 转换成数字
+        if Num[0].isdigit():
+            Num = Num[0]
+        else:
+            Num = __getNum(Num[0])    # 转换成数字
+    else:
+        Num = ''
     out = re.sub(pattern, Num, string)
     return out
+# print(getNumber("Not Found Number"))
+# print(getNumber('第29讲 afterLoad'))
+# print(getNumber('第16讲完善数据库抽象封装操作支持自定义对象序列化存储1_52studyit.com'))
 # print(getNumber('第二课_自动摘要及正文抽取'))
 # print(getNumber('第二十九讲（漫画作文）讲【公众号】免费分享'))
 
