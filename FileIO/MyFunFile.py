@@ -49,8 +49,8 @@ def getNumber(string):
         Num = __getNum(Num[0])    # 转换成数字
     out = re.sub(pattern, Num, string)
     return out
-print(getNumber('第二课_自动摘要及正文抽取'))
-print(getNumber('第二十九讲（漫画作文）讲【公众号】免费分享'))
+# print(getNumber('第二课_自动摘要及正文抽取'))
+# print(getNumber('第二十九讲（漫画作文）讲【公众号】免费分享'))
 
 def rmAD(str):
     '''
