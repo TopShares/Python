@@ -67,6 +67,17 @@ class MongoDB:
         result = self.collection.delete_many(kwargs)
         return result.deleted_count
 
+    def drop(self):
+        '''
+        数据库删除
+        '''
+        self.collection.drop()
+
+    def remove(self):
+        '''
+        表清空
+        '''
+        self.collection.remove();
     def update(self, *args, **kwargs):
         """更新一批数据
         
@@ -147,3 +158,4 @@ if __name__ == '__main__':
     """查"""
     print(mongodb.find_all(show_id=True))  # 所有查询结果，包含_id
     print(mongodb.find_col("_id", "author", "gender", author="XerCis"))  # 显示author、gender，且author为XerCis
+

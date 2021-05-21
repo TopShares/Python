@@ -27,16 +27,17 @@ def openPath(path=""):
             # if exten[1] == '.txt':
             #     new = exten[0]
             # new = re.sub('_52studyit.com', '', filename)        # sub
-            new = rmAD(filename)              # 删除【】广告
+            # new = rmAD(filename)              # 删除【】广告
             # new = addNum(filename)            # 个位数字后加点
             # new = addDot(filename)            # 数字后加点
-            # new = getNumber(filename)         # 中文转阿拉伯数字
+            new = getNumber(filename)         # 中文转阿拉伯数字
             newPath = os.path.join(path, new)
             os.renames(pathTmp,newPath)
 
 def main():
     path = r''
     p=r'E:\MYSQL数据库底层封装教程'
+    p=r'C:\Users\Administrator\Desktop\新建文件夹 (2)'
     openPath(p)
 
 
