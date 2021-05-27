@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 c = config()
+c.db_conf('mongodb://localhost:27017', db='umei_net', collection='umei')
 
 browser = c.browser
 mongodb = c.mongodb
@@ -25,16 +26,12 @@ imgInfo = {
     'ArticleGenre': '',
     'ImageUrl': []
 }
-# 获取图片网页url
-#　body > div.wrap > div.TypeList > ul > li:nth-child(1) > a > img
-# TypeBigPics
 
 
 def parse_imgUrls(url, page):
     '''
     解析图片页面上的链接
     '''
-    imgInfo['ParentPage'] = page
     browser.get(url)
     wait = WebDriverWait(browser, 3)
     imgUrl = wait.until(EC.presence_of_all_elements_located(
@@ -42,12 +39,12 @@ def parse_imgUrls(url, page):
     dataList = []
     for i in imgUrl:
         url = i.get_attribute('href').strip()
-        dataList.append(url)
-    # mongodb.insert(dataList)
+        tmp = {'page': page, 'url': url}
+        dataList.append(tmp)
     return dataList
 
 
-def parse_imgUrl(url):
+def parse_imgUrl(page, url):
     '''
     解析链接上的图片地址并下载
     '''
@@ -56,6 +53,7 @@ def parse_imgUrl(url):
     if pageCount == None:
         pageCount = '1'
 
+    imgInfo['ParentPage'] = page
     imgInfo['ParentUrl'] = url
     # 拼接url
     urls = joint_url(url, int(pageCount))
@@ -111,7 +109,19 @@ def download_img(urls):
                     href = i.get_attribute('src').strip()
                     imgInfo['ImageUrl'].append(href)
             except(TimeoutException):
-                pass
+                try:
+                    browser.execute_script(
+                        "window.scrollTo(0,document.body.scrollHeight);")
+                    wait = WebDriverWait(browser, 10)
+                    selector = '.ImageBody > img'
+                    imgUrl = wait.until(EC.presence_of_all_elements_located(
+                        (By.CSS_SELECTOR, selector)))
+                    for i in imgUrl:
+                        href = i.get_attribute('src').strip()
+                        imgInfo['ImageUrl'].append(href)
+                except(TimeoutException):
+                    pass
+
         finally:
             get_img_info(wait)
 
@@ -120,7 +130,7 @@ def download_img(urls):
     mongodb.insert(imgInfo)
     imgInfo['ImageUrl'] = []
     # time_sleep(5)
-    time.sleep(0.25)
+    # time.sleep(0.25)
 
     # http://kr.shanghai-jiuxin.com/file/2021/0430/99bc220c184543c71c5e76b5bd0ae523.jpg
 
@@ -158,22 +168,10 @@ def get_all_page(url):
         return pageCount
 
 
-def next_page(page_number):
-    '''
-    翻页
-    '''
-    pass
-
-
-def pic_download(urls):
-    '''
-    图片下载
-    '''
-
-
 def test_url():
     url = 'https://www.umei.net/touxiangtupian/QQtouxiang/231359.htm'
     url = 'https://www.umei.net/touxiangtupian/QQtouxiang/231357.htm'
+    url = 'https://www.umei.net/touxiangtupian/QQtouxiang/231162.htm'
     parse_imgUrl(url)
 
 
@@ -196,25 +194,29 @@ def test():
     mongodb.insert(imgInfo)
 
 
+def db_test():
+    mongodb.insert({'test': 'test'})
+
+
 if __name__ == '__main__':
     # test()
     # test_url()
+    # db_test()
     # exit()
 
+    # 单线程下载
     c.selenium_conf(headless=True)
 
     url = 'https://www.umei.net/touxiangtupian/QQtouxiang/index.htm'
+    url = 'https://www.umei.net/touxiangtupian/feizhuliutouxiang/index.htm'  # 非主流头像
     allPage = get_all_page(url)
     urls = joint_url(url, allPage)
 
-    # urslList = parse_imgUrls(url, 1)  # 攫取第一页
-    # for i in urslList:
-    #     parse_imgUrl(i)
+    allUrlList = []
 
     count = 1
     for u in urls:
-        urslList = parse_imgUrls(u, count)
-        [parse_imgUrl(x) for x in urslList]
+        print("now count: " + str(count))
+        [allUrlList.append(x) for x in parse_imgUrls(u, count)]
         count += 1
-
-    # parse_imgUrls(url, allPage)
+    [parse_imgUrl(x['page'], x['url']) for x in allUrlList]
