@@ -51,9 +51,12 @@ class Logger:
         formatter = logging.Formatter("%(asctime)s - %(message)s")
         logger = logging.getLogger("monitor")
         logger.setLevel(CONFIG.LOG_LEVEL)
-
         sh = logging.StreamHandler()
         sh.setFormatter(formatter)
+        handler = logging.FileHandler("log.txt")
+        handler.setLevel(logging.INFO)
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
         logger.addHandler(sh)
         return logger
 

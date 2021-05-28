@@ -1,7 +1,7 @@
 from conf.config import config
 
 c = config()
-
+c.db_conf('mongodb://localhost:27017', db='umei_net', collection='umei')
 
 mongodb = c.mongodb
 
