@@ -1,0 +1,113 @@
+2021-05-28 17:28:03,457 - Jobs: 4
+2021-05-28 17:28:03,458 - down...
+2021-05-28 17:28:03,458 - page: 1
+2021-05-28 17:28:03,459 - 
+ url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-28 17:28:03,459 - done...
+2021-05-28 17:28:03,460 - Jobs: 3
+2021-05-28 17:28:03,460 - down...
+2021-05-28 17:28:03,460 - page: 2
+2021-05-28 17:28:03,460 - 
+ url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-28 17:28:03,461 - done...
+2021-05-28 17:28:03,461 - Jobs: 2
+2021-05-28 17:28:03,462 - down...
+2021-05-28 17:28:03,462 - page: 3
+2021-05-28 17:28:03,462 - 
+ url: https://www.umei.net/faxingtupian/mingxingfaxing/index_3.htm
+2021-05-28 17:28:03,462 - done...
+2021-05-28 17:28:03,463 - Jobs: 1
+2021-05-28 17:28:03,463 - down...
+2021-05-28 17:28:03,463 - page: 4
+2021-05-28 17:28:03,463 - 
+ url: https://www.umei.net/faxingtupian/mingxingfaxing/index_4.htm
+2021-05-28 17:28:03,464 - done...
+2021-05-28 17:28:03,464 - Jobs: 0
+2021-05-28 17:28:03,465 - down...
+2021-05-28 17:28:03,465 - page: 5
+2021-05-28 17:28:03,466 - 
+ url: https://www.umei.net/faxingtupian/mingxingfaxing/index_5.htm
+2021-05-28 17:28:03,466 - done...
+2021-05-29 15:40:46,266 - Jobs: 2
+2021-05-29 15:40:46,266 - page: 1
+2021-05-29 15:40:46,267 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:41:32,659 - Jobs: 1
+2021-05-29 15:41:32,660 - page: 1
+2021-05-29 15:41:32,660 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:43:02,153 - Jobs: 0
+2021-05-29 15:43:02,153 - page: 2
+2021-05-29 15:43:02,153 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:43:02,310 - [{'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/202927.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/199129.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/198989.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/198837.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/197794.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/193864.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/185636.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/185594.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/187342.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/186944.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/186731.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10552.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10553.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10554.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10555.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10556.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10558.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10557.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10559.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10560.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10561.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10562.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10563.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10564.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10565.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10566.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10567.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10568.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10570.htm'}, {'page': 1, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10571.htm'}]
+2021-05-29 15:43:02,312 - done...
+2021-05-29 15:44:24,727 - [{'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10572.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10573.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10574.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10575.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10576.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10577.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10579.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10578.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10580.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10581.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10583.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10582.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10584.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10585.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10588.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10589.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10590.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10592.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10597.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10601.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10613.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10586.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10587.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10594.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10595.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10593.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10598.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10591.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10596.htm'}, {'page': 2, 'url': 'https://www.umei.net/faxingtupian/mingxingfaxing/10599.htm'}]
+2021-05-29 15:44:24,730 - done...
+2021-05-29 15:46:26,892 - Jobs: 1
+2021-05-29 15:46:26,893 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:46:26,894 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,894 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm retry times 1
+2021-05-29 15:46:26,895 - done...
+2021-05-29 15:46:26,895 - Jobs: 1
+2021-05-29 15:46:26,896 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:46:26,896 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,897 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm retry times 1
+2021-05-29 15:46:26,897 - done...
+2021-05-29 15:46:26,898 - Jobs: 1
+2021-05-29 15:46:26,898 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:46:26,898 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,899 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm retry times 2
+2021-05-29 15:46:26,899 - done...
+2021-05-29 15:46:26,900 - Jobs: 1
+2021-05-29 15:46:26,900 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:46:26,900 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,901 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm retry times 2
+2021-05-29 15:46:26,901 - done...
+2021-05-29 15:46:26,901 - Jobs: 1
+2021-05-29 15:46:26,902 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:46:26,902 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,903 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm retry times 3
+2021-05-29 15:46:26,903 - done...
+2021-05-29 15:46:26,903 - Jobs: 1
+2021-05-29 15:46:26,904 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:46:26,904 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,904 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm retry times 3
+2021-05-29 15:46:26,905 - done...
+2021-05-29 15:46:26,905 - Jobs: 1
+2021-05-29 15:46:26,905 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:46:26,906 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,906 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm retry times 4
+2021-05-29 15:46:26,906 - done...
+2021-05-29 15:46:26,907 - Jobs: 1
+2021-05-29 15:46:26,908 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:46:26,908 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,908 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm retry times 4
+2021-05-29 15:46:26,909 - done...
+2021-05-29 15:46:26,909 - Jobs: 1
+2021-05-29 15:46:26,910 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:46:26,910 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,910 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm retry times 5
+2021-05-29 15:46:26,910 - done...
+2021-05-29 15:46:26,911 - Jobs: 1
+2021-05-29 15:46:26,911 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:46:26,911 - can only concatenate str (not "coroutine") to str
+2021-05-29 15:46:26,912 - Url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm retry times 5
+2021-05-29 15:46:26,912 - done...
+2021-05-29 15:46:26,912 - Jobs: 1
+2021-05-29 15:46:26,913 - Jobs: 0
+2021-05-29 15:47:04,338 - Jobs: 1
+2021-05-29 15:47:04,339 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:47:04,339 - <coroutine object parse_imgUrls at 0x00000208C1BE39C8>
+2021-05-29 15:47:04,340 - done...
+2021-05-29 15:47:04,341 - Jobs: 0
+2021-05-29 15:47:04,341 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:47:04,342 - <coroutine object parse_imgUrls at 0x00000208C1BE39C8>
+2021-05-29 15:47:04,342 - done...
+2021-05-29 15:48:28,405 - Jobs: 1
+2021-05-29 15:48:28,406 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
+2021-05-29 15:48:28,406 - <coroutine object parse_imgUrls at 0x000001FC31215A48>
+2021-05-29 15:48:28,408 - done...
+2021-05-29 15:48:28,408 - Jobs: 0
+2021-05-29 15:48:28,409 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index_2.htm
+2021-05-29 15:48:28,409 - <coroutine object parse_imgUrls at 0x000001FC31215A48>
+2021-05-29 15:48:28,409 - done...
+2021-05-29 15:55:52,754 - Jobs: 1
+2021-05-29 15:55:52,755 - url: https://www.umei.net/faxingtupian/mingxingfaxing/index.htm
